@@ -37,7 +37,7 @@ const initialState: FormState = {
 };
 
 const RegisterForm = () => {
-  const [state, formAction] = useFormState<FormState, FormData>(
+  const [state, formAction] = React.useActionState<FormState, FormData>(
     registerAction,
     initialState
   );

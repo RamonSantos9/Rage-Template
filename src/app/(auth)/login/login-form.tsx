@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ToastProvider";
 import { useFormState, useFormStatus } from "react-dom";
 import loginAction from "@/app/(auth)/login/loginAction";
-import { Loader2 } from "lucide-react"; 
+import { Loader2 } from "lucide-react";
 
 type State = {
   success: boolean;
@@ -46,9 +46,12 @@ const LoginForm = () => {
     password: "",
   });
 
-  const [state, formAction] = useFormState<State, FormData>(loginAction, {
-    success: false,
-  });
+  const [state, formAction] = React.useActionState<State, FormData>(
+    loginAction,
+    {
+      success: false,
+    }
+  );
 
   React.useEffect(() => {
     if (state?.success) {
