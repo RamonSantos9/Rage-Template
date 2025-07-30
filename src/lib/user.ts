@@ -1,5 +1,5 @@
 import { compareSync } from "bcrypt-ts";
-import db from "./db";
+import { db } from "./db";
 
 type User = {
   email: string;

@@ -28,7 +28,7 @@ interface ToastProps {
   onHide: () => void;
 }
 
-export const Toast: React.FC<ToastProps> = ({ message, isVisible, onHide }) => {
+export const Toast: React.FC<ToastProps> = ({ message, isVisible }) => {
   return (
     <div
       className={`fixed bottom-4 right-4 bg-black text-white px-2 py-1 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out ${

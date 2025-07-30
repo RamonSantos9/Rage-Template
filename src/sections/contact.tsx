@@ -8,8 +8,6 @@ import {
   MapPin,
   Clock,
   Send,
-  CheckCircle,
-  MessageSquare,
   Calendar,
   Star,
   Users,
@@ -52,13 +50,6 @@ export default function Contact() {
       description: "Atendimento presencial",
       color: "from-orange-500 to-red-600",
     },
-  ];
-
-  const features = [
-    "Resposta em até 24 horas",
-    "Orçamento gratuito",
-    "Suporte completo",
-    "Garantia de satisfação",
   ];
 
   const testimonials = [
@@ -392,7 +383,7 @@ export default function Contact() {
                     ))}
                   </div>
                   <p className="text-black font-switzer-regular text-sm mb-2">
-                    "{testimonial.text}"
+                    &ldquo;{testimonial.text}&rdquo;
                   </p>
                   <div className="text-custom-secondary font-switzer-medium text-sm">
                     {testimonial.name} - {testimonial.company}

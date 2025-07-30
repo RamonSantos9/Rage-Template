@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -137,7 +136,7 @@ const Footer = () => {
                   {category}
                 </h3>
                 <ul className="space-y-4">
-                  {links.map((link, linkIndex) => (
+                  {links.map((link) => (
                     <li key={link.name}>
                       <Link
                         href={link.href}
@@ -153,6 +152,34 @@ const Footer = () => {
             )
           )}
         </div>
+
+        {/* Newsletter Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-16 pt-12 border-t border-gray-200"
+        >
+          <div className="text-center max-w-2xl mx-auto">
+            <h3 className="text-2xl font-switzer-medium text-black mb-4">
+              Fique por dentro das novidades
+            </h3>
+            <p className="text-black font-switzer-regular mb-8">
+              Receba dicas de design, desenvolvimento e marketing digital
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Seu melhor email"
+                className="flex-1 px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-custom-secondary focus:border-transparent font-switzer-regular bg-white text-black placeholder-gray-500"
+              />
+              <button className="px-6 py-3 bg-custom-secondary text-white rounded-lg font-switzer-medium hover:bg-custom-secondary/90 transition-colors duration-300">
+                Inscrever
+              </button>
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Bottom Footer */}

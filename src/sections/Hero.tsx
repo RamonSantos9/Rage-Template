@@ -1,13 +1,8 @@
 "use client";
 
 import Button from "@/components/Button";
-import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, -100]);
-  const y2 = useTransform(scrollY, [0, 1000], [0, 50]);
-
   return (
     <>
       <section id="home" className="overflow-x-clip relative py-44 lg:py-64">
