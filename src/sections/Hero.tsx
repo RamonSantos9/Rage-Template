@@ -1,9 +1,6 @@
 "use client";
 
 import Button from "@/components/Button";
-import forest from "@/assets/forest.png";
-import nuvem from "@/assets/nuvem.png";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
