@@ -1,36 +1,41 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ykfjercuuovevqeqjyxm.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/**",
+      },
+    ],
+  },
   webpack(config) {
-    // Encontrar a regra de carregamento para arquivos SVG
+    // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")
     );
 
-    // Modificar as regras de SVGs
     config.module.rules.push(
-      // Reaplicar a regra existente para SVGs que podem ser importados como URLs
+      // Reapply the existing rule, but only for svg imports ending in ?url
       {
         ...fileLoaderRule,
         test: /\.svg$/i,
-        resourceQuery: /url/, // Aplica para *.svg?url
+        resourceQuery: /url/, // *.svg?url
       },
-      // Converter outros SVGs em componentes React
+      // Convert all other *.svg imports to React components
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [/url/] }, // Exclui SVGs com ?url
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
         use: ["@svgr/webpack"],
       }
     );
 
-    // Excluir a regra anterior para arquivos SVG que já foram tratados
+    // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
-  },
-
-  images: {
-    domains: ["framerusercontent.com", "via.placeholder.com"], // Adicione os domínios permitidos
   },
 };
 

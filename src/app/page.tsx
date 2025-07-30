@@ -1,24 +1,24 @@
-import { ReactLenis } from "lenis/react";
-import { Header } from "@/sections/Header";
-import { Hero } from "@/sections/Hero";
-import { Acesso } from "@/sections/Acesso2";
-import { Testimonials } from "@/sections/Testimonials";
-import { Footer } from "@/sections/Footer";
-import { Template } from "@/sections/Templates";
+import React from "react";
+
+import { ToastProvider } from "@/components/ToastProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Hero from "@/sections/hero";
+import About from "@/sections/about";
+import Services from "@/sections/services";
+import Portfolio from "@/sections/portfolio";
+import Contact from "@/sections/contact";
 
 export default function Home() {
   return (
-    <ReactLenis root>
-      <>
-        <Header />
-        <main>
-          <Hero />
-          <Acesso />
-          <Template />
-          <Testimonials />
-        </main>
-        <Footer />
-      </>
-    </ReactLenis>
+    <ToastProvider>
+      <Navbar />
+      <Hero />
+      <About />
+      <Services />
+      <Portfolio />
+      <Contact />
+      <Footer />
+    </ToastProvider>
   );
 }
