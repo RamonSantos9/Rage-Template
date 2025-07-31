@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/Button";
+import Button from "../components/Button";
 
 export default function Hero() {
   return (
