@@ -1,6 +1,14 @@
+import path from "path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack(config) {
+    // Configuração para resolver paths @/
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.resolve(process.cwd(), "src"),
+    };
+
     // Encontrar a regra de carregamento para arquivos SVG
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")
