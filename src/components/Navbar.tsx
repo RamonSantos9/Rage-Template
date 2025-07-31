@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,34 +18,31 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 lg:bg-white/30 bg-transparent backdrop-blur-md">
-      <div className="max-w-5xl mx-auto px-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src="/assets/logo.svg"
-              alt="Logo"
-              width={32}
-              height={32}
-              className="text-blue-400"
-            />
+            <div className="w-8 h-8 bg-custom-secondary rounded-lg flex items-center justify-center">
+              <span className="text-white font-switzer-medium text-sm">LP</span>
+            </div>
+            <span className="text-xl font-switzer-medium text-black">Landing Page</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8 font-switzer">
+          <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-black transition-colors duration-200 font-medium"
+                className="text-gray-700 hover:text-custom-secondary transition-colors duration-200 font-switzer-medium"
               >
                 {item.name}
               </Link>
             ))}
             <Button
               variant="primary"
-              className="text-black font-switzer text-sm"
+              className="text-black font-switzer-medium text-sm"
               size="md"
             >
               Começe Agora
@@ -55,7 +51,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 font-switzer"
+            className="md:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -75,14 +71,14 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden border-t border-gray-200"
+              className="md:hidden border-t border-gray-200 bg-white"
             >
               <div className="py-4 space-y-4">
                 {menuItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block text-black hover:text-black/60 transition-colors duration-200 font-medium font-switzer"
+                    className="block text-black hover:text-custom-secondary transition-colors duration-200 font-switzer-medium"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
@@ -91,7 +87,7 @@ const Navbar = () => {
 
                 <Button
                   variant="primary"
-                  className="text-black font-switzer text-sm"
+                  className="text-black font-switzer-medium text-sm"
                   size="md"
                 >
                   Começe Agora
